@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
@@ -13,8 +14,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 bg-white/80 backdrop-blur-md border-b border-slate-200/50"
     >
       <Link href="/" className="flex items-center gap-2 text-blue-600">
-        <FiHexagon className="w-8 h-8" />
-        <span className="font-bold text-xl tracking-tight text-slate-900">SARYAB<br/><span className="text-xs font-normal text-slate-500 uppercase tracking-widest">Technicals</span></span>
+<img src="/images/logo.webp" alt="logo" className="w-20 h-20 object-contain" />
       </Link>
 
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
