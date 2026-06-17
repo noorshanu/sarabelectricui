@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
@@ -9,12 +10,12 @@ import { fadeUp } from "../../utils/animations";
 const filters = ["All Projects", "Fitout", "HVAC", "Cleaning", "Security", "Pool", "Maintenance"];
 
 const projects = [
-  { title: "Office Fitout Project", location: "Dubai, UAE", category: "Fitout" },
-  { title: "Commercial HVAC Upgrade", location: "Abu Dhabi, UAE", category: "HVAC" },
-  { title: "Hotel Cleaning Contract", location: "Sharjah, UAE", category: "Cleaning" },
-  { title: "Security System Installation", location: "Dubai, UAE", category: "Security" },
-  { title: "Pool Maintenance Program", location: "Ajman, UAE", category: "Pool" },
-  { title: "Building Maintenance Contract", location: "Dubai, UAE", category: "Maintenance" },
+  { title: "Office Fitout Project", location: "Dubai, UAE", category: "Fitout", image: "/images/projects/office.png" },
+  { title: "Commercial HVAC Upgrade", location: "Abu Dhabi, UAE", category: "HVAC", image: "/images/projects/hvac.png" },
+  { title: "Hotel Cleaning Contract", location: "Sharjah, UAE", category: "Cleaning", image: "/images/projects/cleaning.png" },
+  { title: "Security System Installation", location: "Dubai, UAE", category: "Security", image: "/images/projects/security.png" },
+  { title: "Pool Maintenance Program", location: "Ajman, UAE", category: "Pool", image: "/images/projects/swiming pool.png" },
+  { title: "Building Maintenance Contract", location: "Dubai, UAE", category: "Maintenance", image: "/images/projects/maintance.png" },
 ];
 
 export default function ProjectsSection() {
@@ -71,18 +72,26 @@ export default function ProjectsSection() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {filtered.slice(scrollIndex, scrollIndex + visibleCount).map((project) => (
-              <div
+              <motion.div
                 key={project.title}
-                className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-shadow"
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-shadow group"
               >
-                <div className="aspect-[4/3] bg-slate-200 flex items-center justify-center text-slate-400 text-sm">
-                  Project Image Placeholder
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-slate-900 mb-1">{project.title}</h3>
                   <p className="text-sm text-slate-500">{project.location}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
