@@ -8,8 +8,8 @@ import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Saryab Technicals | Integrated Facilities Management",
-  description: "Complete Control. Total Performance. Integrated Facilities Management for modern buildings.",
+  title: "Saryab Technicals | Complete Facility Solutions",
+  description: "One Partner. Complete Facility Solutions. Integrated facilities management and engineering services across the UAE.",
 };
 
 export default function RootLayout({

@@ -1,25 +1,23 @@
 import HeroSection from "./sections/HeroSection";
 import StatsSection from "./sections/StatsSection";
-import ApproachSection from "./sections/ApproachSection";
-import TrustedBrandsSection from "./sections/TrustedBrandsSection";
+import WhoWeAreSection from "./sections/WhoWeAreSection";
 import ServicesSection from "./sections/ServicesSection";
 import DashboardSection from "./sections/DashboardSection";
 import ProjectsSection from "./sections/ProjectsSection";
-import TechnologySection from "./sections/TechnologySection";
-import AboutContactSection from "./sections/AboutContactSection";
+import WhyChooseUsSection from "./sections/WhyChooseUsSection";
+import ContactCTASection from "./sections/ContactCTASection";
 
 export default function PageContent() {
   return (
-    <div id="main-scroll-container" className="relative z-10 w-full">
+    <div id="main-scroll-container" className="relative w-full">
       <HeroSection />
       <StatsSection />
-      <ApproachSection />
-      <TrustedBrandsSection />
+      <WhoWeAreSection />
       <ServicesSection />
       <DashboardSection />
       <ProjectsSection />
-      <TechnologySection />
-      <AboutContactSection />
+      <WhyChooseUsSection />
+      <ContactCTASection />
     </div>
   );
 }
