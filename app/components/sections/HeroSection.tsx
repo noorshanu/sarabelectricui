@@ -45,7 +45,7 @@ export default function HeroSection() {
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/50 to-slate-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/45 via-slate-900/20 to-transparent" />
       </div>
 
       <div className="container-main w-full py-20 lg:py-28 pb-28 lg:pb-36">
