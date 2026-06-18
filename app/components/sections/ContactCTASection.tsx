@@ -8,8 +8,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import { fadeUp } from "../../utils/animations";
 
 const contactInfo = [
-  { icon: FiPhone, value: "+971 52 602 3502", href: "tel:+971526023502" },
-  { icon: FiMail, value: "kiran@saryabtechnicals.com", href: "mailto:kiran@saryabtechnicals.com" },
+  { icon: FiPhone, value: "+971 58 616 6905", href: "tel:+971586166905" },
+  { icon: FiMail, value: "info@saryabtechnicals.com", href: "mailto:info@saryabtechnicals.com" },
   { icon: FiMapPin, value: "Office No. 212, RNA Resources Building, Al Quoz 3, Dubai, UAE", href: "#" },
 ];
 
@@ -43,13 +43,13 @@ export default function ContactCTASection() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  href="tel:+971526023502"
+                  href="tel:+971586166905"
                   className="inline-flex items-center gap-2 bg-brand-blue text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
                 >
                   Call Now <FiArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="https://wa.me/971526023502"
+                  href="https://wa.me/971586166905"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#20bd5a] transition-colors"

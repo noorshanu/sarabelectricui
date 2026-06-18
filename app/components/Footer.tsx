@@ -13,10 +13,18 @@ export default function Footer() {
               Saryab Technicals delivers integrated facility management and engineering solutions across the UAE.
             </p>
             <div className="flex gap-3">
-              {[FiFacebook, FiInstagram, FiLinkedin, FiYoutube].map((Icon, i) => (
+              {[
+                { icon: FiFacebook, href: "https://www.facebook.com/profile.php?id=61589287366189", label: "Facebook" },
+                { icon: FiInstagram, href: "https://www.instagram.com/saryab_technicals/", label: "Instagram" },
+                { icon: FiLinkedin, href: "#", label: "LinkedIn" },
+                { icon: FiYoutube, href: "#", label: "YouTube" },
+              ].map(({ icon: Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={label}
                   className="w-9 h-9 rounded-full border border-slate-600 flex items-center justify-center hover:border-brand-blue hover:text-brand-blue transition-colors"
                 >
                   <Icon className="w-4 h-4" />
