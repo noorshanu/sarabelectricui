@@ -1,0 +1,56 @@
+export const siteConfig = {
+  name: "Saryab Technicals",
+  legalName: "Saryab Technicals",
+  url: "https://saryabtechnicals.com",
+  description:
+    "Saryab Technicals provides integrated facilities management, HVAC, electrical, plumbing, cleaning, security, fitout, and building maintenance services across the UAE.",
+  shortDescription:
+    "Complete facility solutions — IFM, MEP, cleaning, security, and fitout services across the UAE.",
+  locale: "en_AE",
+  phone: "+971 58 616 6905",
+  phoneTel: "+971586166905",
+  email: "info@saryabtechnicals.com",
+  address: {
+    streetAddress: "Office No. 212, RNA Resources Building, Al Quoz 3",
+    addressLocality: "Dubai",
+    addressRegion: "Dubai",
+    addressCountry: "AE",
+    postalCode: "",
+  },
+  geo: {
+    latitude: 25.1425,
+    longitude: 55.2433,
+  },
+  social: {
+    facebook: "https://www.facebook.com/profile.php?id=61589287366189",
+    instagram: "https://www.instagram.com/saryab_technicals/",
+  },
+  keywords: [
+    "Saryab Technicals",
+    "facilities management UAE",
+    "integrated facilities management Dubai",
+    "HVAC services Dubai",
+    "electrical works UAE",
+    "plumbing services Dubai",
+    "cleaning services UAE",
+    "security services Dubai",
+    "fitout and interiors Dubai",
+    "building maintenance UAE",
+    "MEP engineering Dubai",
+    "facility management company",
+    "commercial maintenance Dubai",
+  ],
+  services: [
+    "HVAC Services",
+    "Electrical Works",
+    "Plumbing & Sanitary",
+    "Cleaning Services",
+    "Security Services",
+    "Fitout & Interiors",
+    "Building Maintenance",
+    "Swimming Pool Works",
+    "Integrated Facilities Management",
+  ],
+} as const;
+
+export const siteUrl = siteConfig.url;
