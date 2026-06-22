@@ -2,28 +2,25 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FiPhone, FiMail, FiMapPin, FiArrowRight } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
-import { fadeUp } from "../../utils/animations";
+import { siteConfig } from "@/lib/site";
+import ScrollReveal from "../ScrollReveal";
+
+const fullAddress = `${siteConfig.address.streetAddress}, ${siteConfig.address.addressLocality}, UAE`;
 
 const contactInfo = [
-  { icon: FiPhone, value: "+971 58 616 6905", href: "tel:+971586166905" },
-  { icon: FiMail, value: "info@saryabtechnicals.com", href: "mailto:info@saryabtechnicals.com" },
-  { icon: FiMapPin, value: "Office No. 212, RNA Resources Building, Al Quoz 3, Dubai, UAE", href: "#" },
+  { icon: FiPhone, value: siteConfig.phone, href: `tel:${siteConfig.phoneTel}` },
+  { icon: FiMail, value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+  { icon: FiMapPin, value: fullAddress, href: siteConfig.nav.contact },
 ];
 
 export default function ContactCTASection() {
   return (
     <section id="contact" className="py-16 lg:py-20 bg-white">
       <div className="container-main">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="relative rounded-2xl overflow-hidden min-h-[320px] lg:min-h-[280px]"
-        >
+        <ScrollReveal y={40}>
+          <div className="relative rounded-2xl overflow-hidden min-h-[320px] lg:min-h-[280px]">
           <Image
             src="/images/cta.png"
             alt="Contact CTA Background"
@@ -44,17 +41,20 @@ export default function ContactCTASection() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="tel:+971586166905"
-                  className="inline-flex items-center gap-2 bg-brand-blue text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+                  className="btn-primary px-5 py-2.5 rounded-lg text-sm"
                 >
                   Call Now <FiArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="https://wa.me/971586166905"
+                  href={siteConfig.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#20bd5a] transition-colors"
                 >
                   <FaWhatsapp className="w-5 h-5" /> WhatsApp Us
+                </Link>
+                <Link href={siteConfig.nav.contact} className="btn-outline-white px-5 py-2.5 rounded-lg text-sm">
+                  Contact Us <FiArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -77,7 +77,8 @@ export default function ContactCTASection() {
               ))}
             </div>
           </div>
-        </motion.div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

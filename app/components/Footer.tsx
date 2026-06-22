@@ -1,29 +1,53 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { FiFacebook, FiInstagram, FiLinkedin, FiYoutube, FiArrowRight } from "react-icons/fi";
+import { FiFacebook, FiInstagram } from "react-icons/fi";
+import { siteConfig } from "@/lib/site";
+
+const { nav, whatsappUrl } = siteConfig;
+
+const quickLinks = [
+  { label: "Home", href: nav.home },
+  { label: "About Us", href: nav.about },
+  { label: "Services", href: nav.services },
+  { label: "Projects", href: nav.projects },
+  { label: "Why Us", href: nav.whyUs },
+  { label: "Contact Us", href: nav.contact },
+];
+
+const serviceLinks = [
+  "HVAC Services",
+  "Electrical Works",
+  "Plumbing & Sanitary",
+  "Cleaning Services",
+  "Security Services",
+  "Fitout & Interiors",
+  "Building Maintenance",
+];
+
+const fullAddress = `${siteConfig.address.streetAddress}, ${siteConfig.address.addressLocality}, UAE`;
 
 export default function Footer() {
   return (
     <footer className="bg-brand-navy text-slate-300">
       <div className="container-main py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
-            <img src="/images/logo.webp" alt="Saryab Technicals" className="h-16 w-auto object-contain mb-4 brightness-0 invert" />
+            <Link href={nav.home} className="inline-block mb-4">
+              <img src="/logo.jpeg" alt="Saryab Technicals" className="h-20 w-auto object-contain rounded-md bg-white/95 p-1" />
+            </Link>
             <p className="text-sm leading-relaxed text-slate-400 mb-6">
               Saryab Technicals delivers integrated facility management and engineering solutions across the UAE.
             </p>
             <div className="flex gap-3">
               {[
-                { icon: FiFacebook, href: "https://www.facebook.com/profile.php?id=61589287366189", label: "Facebook" },
-                { icon: FiInstagram, href: "https://www.instagram.com/saryab_technicals/", label: "Instagram" },
-                { icon: FiLinkedin, href: "#", label: "LinkedIn" },
-                { icon: FiYoutube, href: "#", label: "YouTube" },
+                { icon: FiFacebook, href: siteConfig.social.facebook, label: "Facebook" },
+                { icon: FiInstagram, href: siteConfig.social.instagram, label: "Instagram" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full border border-slate-600 flex items-center justify-center hover:border-brand-blue hover:text-brand-blue transition-colors"
                 >
@@ -36,9 +60,9 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-sm">
-              {["Home", "About Us", "Services", "Projects", "Contact Us"].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="hover:text-white transition-colors">{item}</Link>
+              {quickLinks.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="hover:text-white transition-colors">{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -47,38 +71,32 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Our Services</h4>
             <ul className="space-y-2.5 text-sm">
-              {["HVAC Services", "Electrical Works", "Cleaning Services", "Security Services", "Fitout & Interiors", "Building Maintenance"].map((item) => (
+              {serviceLinks.map((item) => (
                 <li key={item}>
-                  <Link href="#services" className="hover:text-white transition-colors">{item}</Link>
+                  <Link href={nav.services} className="hover:text-white transition-colors">{item}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Industries</h4>
-            <ul className="space-y-2.5 text-sm">
-              {["Commercial", "Hospitality", "Industrial", "Retail", "Residential", "Healthcare"].map((item) => (
-                <li key={item}>
-                  <Link href="#industries" className="hover:text-white transition-colors">{item}</Link>
-                </li>
-              ))}
+            <h4 className="text-white font-semibold mb-4">Contact</h4>
+            <ul className="space-y-2.5 text-sm text-slate-400">
+              <li>
+                <a href={`tel:${siteConfig.phoneTel}`} className="hover:text-white transition-colors">{siteConfig.phone}</a>
+              </li>
+              <li>
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors">{siteConfig.email}</a>
+              </li>
+              <li>
+                <Link href={nav.contact} className="hover:text-white transition-colors">{fullAddress}</Link>
+              </li>
+              <li>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  WhatsApp
+                </a>
+              </li>
             </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold mb-4">Newsletter</h4>
-            <p className="text-sm text-slate-400 mb-4">Subscribe to get updates on our latest projects and services.</p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-4 py-2.5 rounded-l-md bg-slate-800 border border-slate-700 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-blue"
-              />
-              <button className="bg-brand-blue px-4 rounded-r-md hover:bg-blue-700 transition-colors">
-                <FiArrowRight className="w-5 h-5 text-white" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

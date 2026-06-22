@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { fadeUp } from "../../utils/animations";
+import ScrollReveal from "../ScrollReveal";
 
 const filters = ["All Projects", "Fitout", "HVAC", "Cleaning", "Security", "Pool", "Maintenance"];
 
@@ -22,9 +22,10 @@ export default function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState("All Projects");
   const [scrollIndex, setScrollIndex] = useState(0);
 
-  const filtered = activeFilter === "All Projects"
-    ? projects
-    : projects.filter((p) => p.category === activeFilter);
+  const filtered =
+    activeFilter === "All Projects"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
 
   const visibleCount = 3;
   const maxIndex = Math.max(0, filtered.length - visibleCount);
@@ -32,80 +33,101 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="py-20 lg:py-28 bg-white">
       <div className="container-main">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="text-center mb-10"
-        >
+        <ScrollReveal className="text-center mb-10" y={36}>
           <span className="section-label">Our Projects</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy font-display">
             Our Work Speaks <span className="text-brand-blue">For Itself</span>
           </h2>
-        </motion.div>
+        </ScrollReveal>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => { setActiveFilter(filter); setScrollIndex(0); }}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeFilter === filter
-                  ? "bg-brand-blue text-white"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        <div className="relative">
-          <button
-            onClick={() => setScrollIndex((i) => Math.max(0, i - 1))}
-            disabled={scrollIndex === 0}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center disabled:opacity-30 hover:bg-blue-700 transition-colors shadow-lg"
-          >
-            <FiArrowLeft />
-          </button>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {filtered.slice(scrollIndex, scrollIndex + visibleCount).map((project) => (
-              <motion.div
-                key={project.title}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-shadow group"
+        <ScrollReveal className="flex flex-wrap justify-center gap-2 mb-10" y={24} delay={0.08}>
+          <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-full border border-line bg-slate-50">
+            {filters.map((filter) => (
+              <motion.button
+                key={filter}
+                type="button"
+                whileTap={{ scale: 0.94 }}
+                onClick={() => {
+                  setActiveFilter(filter);
+                  setScrollIndex(0);
+                }}
+                className={`filter-pill ${activeFilter === filter ? "filter-pill-active" : "filter-pill-idle"}`}
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                {activeFilter === filter && (
+                  <motion.span
+                    layoutId="project-tab"
+                    className="absolute inset-0 bg-brand-blue rounded-full"
+                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
                   />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-slate-900 mb-1">{project.title}</h3>
-                  <p className="text-sm text-slate-500">{project.location}</p>
-                </div>
-              </motion.div>
+                )}
+                <span className="relative z-10">{filter}</span>
+              </motion.button>
             ))}
           </div>
+        </ScrollReveal>
 
-          <button
+        <div className="relative">
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            onClick={() => setScrollIndex((i) => Math.max(0, i - 1))}
+            disabled={scrollIndex === 0}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center disabled:opacity-30 shadow-lg"
+          >
+            <FiArrowLeft />
+          </motion.button>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${activeFilter}-${scrollIndex}`}
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -24 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="grid md:grid-cols-3 gap-6"
+            >
+              {filtered.slice(scrollIndex, scrollIndex + visibleCount).map((project, i) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -8 }}
+                  className="section-surface rounded-xl overflow-hidden group"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-brand-navy/0 group-hover:bg-brand-navy/20 transition-colors duration-500" />
+                  </div>
+                  <div className="p-5 border-t border-line">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-brand-blue mb-1 font-display">{project.category}</p>
+                    <h3 className="font-bold text-brand-navy mb-1 font-display">{project.title}</h3>
+                    <p className="text-sm text-steel">{project.location}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             onClick={() => setScrollIndex((i) => Math.min(maxIndex, i + 1))}
             disabled={scrollIndex >= maxIndex}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center disabled:opacity-30 hover:bg-blue-700 transition-colors shadow-lg"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center disabled:opacity-30 shadow-lg"
           >
             <FiArrowRight />
-          </button>
+          </motion.button>
         </div>
 
         <div className="text-center mt-10">
-          <Link href="#projects" className="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all">
+          <Link href="#projects" className="inline-flex items-center gap-2 text-brand-blue font-semibold font-display hover:gap-3 transition-all">
             View All Projects <FiArrowRight />
           </Link>
         </div>

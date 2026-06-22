@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
+import { siteConfig } from "@/lib/site";
 import { fadeUp } from "../../utils/animations";
 
 const heroSlides = [
@@ -64,10 +65,15 @@ export default function HeroSection() {
             From HVAC and electrical systems to cleaning, security, and fitout — Saryab Technicals delivers end-to-end integrated facility management across the UAE.
           </p>
           <div className="flex flex-wrap gap-4 justify-start">
-            <Link href="#contact" className="btn-primary">
-              Request Proposal <FiArrowRight />
-            </Link>
-            <Link href="#services" className="btn-outline-white">
+            <a
+              href={siteConfig.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              <FaWhatsapp className="w-4 h-4" /> Request Proposal
+            </a>
+            <Link href={siteConfig.nav.services} className="btn-outline-white">
               Explore Services
             </Link>
           </div>

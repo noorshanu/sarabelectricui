@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "./components/SmoothScroll";
 import Navbar from "./components/Navbar";
@@ -8,10 +8,21 @@ import JsonLd from "./components/JsonLd";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { siteConfig, siteUrl } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"] });
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+});
+
+const ibmPlex = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-ibm-plex",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
-  themeColor: "#0066ff",
+  themeColor: "#2381b5",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -90,8 +101,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${inter.className}`}>
-      <body className="min-h-full flex flex-col bg-white text-slate-900">
+    <html lang="en" className={`h-full antialiased ${plusJakarta.variable} ${ibmPlex.variable}`}>
+      <body className="min-h-full flex flex-col bg-background text-foreground font-body">
         <JsonLd />
         <SmoothScroll>
           <Navbar />

@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #f8fafc;
+  --foreground: #0b132b;
   --brand-blue: #2381b5;
   --brand-navy: #0b132b;
+  --steel: #64748b;
+  --panel: #ffffff;
+  --line: #e2e8f0;
+  --accent-warm: #c4a574;
 }
 
 @theme inline {
@@ -12,11 +16,24 @@
   --color-foreground: var(--foreground);
   --color-brand-blue: var(--brand-blue);
   --color-brand-navy: var(--brand-navy);
+  --color-steel: var(--steel);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-accent-warm: var(--accent-warm);
+  --font-display: var(--font-plus-jakarta);
+  --font-body: var(--font-ibm-plex);
+  --font-family-display: var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-family-body: var(--font-ibm-plex), system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), system-ui, sans-serif;
 }
 
 .container-main {
@@ -24,13 +41,69 @@ body {
 }
 
 .section-label {
-  @apply text-xs font-bold tracking-[0.2em] text-brand-blue uppercase mb-3 block;
+  @apply text-[11px] font-semibold tracking-[0.28em] text-brand-blue uppercase mb-3 block font-display;
+}
+
+.section-surface {
+  @apply relative bg-panel border border-line;
+}
+
+.blueprint-bg {
+  background-image:
+    linear-gradient(to right, rgba(35, 129, 181, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(35, 129, 181, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 .btn-primary {
-  @apply inline-flex items-center gap-2 bg-brand-blue text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-blue-700 transition-colors;
+  @apply inline-flex items-center justify-center gap-2 bg-brand-blue text-white px-6 py-3 rounded-md text-sm font-semibold font-display transition-all duration-200 ease-out;
+}
+
+.btn-primary:hover {
+  @apply bg-brand-navy shadow-md;
+}
+
+.btn-primary:active {
+  @apply scale-[0.98] opacity-90;
 }
 
 .btn-outline-white {
-  @apply inline-flex items-center gap-2 border border-white/80 text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-white/10 transition-colors;
+  @apply inline-flex items-center justify-center gap-2 border border-white/70 text-white px-6 py-3 rounded-md text-sm font-semibold font-display transition-all duration-200 ease-out;
+}
+
+.btn-outline-white:hover {
+  @apply border-white bg-white/10;
+}
+
+.btn-outline-white:active {
+  @apply scale-[0.98] opacity-90;
+}
+
+.filter-pill {
+  @apply relative px-5 py-2 rounded-full text-sm font-medium font-display transition-colors duration-200;
+}
+
+.filter-pill-active {
+  @apply text-white;
+}
+
+.filter-pill-idle {
+  @apply text-steel hover:text-brand-navy bg-white border border-line hover:border-brand-blue/30;
+}
+
+.service-card {
+  @apply relative bg-white border border-line rounded-xl overflow-hidden transition-shadow duration-500;
+}
+
+.service-card::before {
+  content: "";
+  @apply absolute top-0 left-0 w-full h-0.5 bg-brand-blue scale-x-0 origin-left transition-transform duration-500;
+}
+
+.service-card:hover::before {
+  @apply scale-x-100;
+}
+
+.service-card:hover {
+  @apply shadow-[0_20px_50px_-20px_rgba(35,129,181,0.35)] border-brand-blue/30;
 }

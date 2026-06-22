@@ -6,7 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { siteConfig } from "@/lib/site";
 
 export default function WhatsAppButton() {
-  const whatsappUrl = `https://wa.me/${siteConfig.phoneTel.replace("+", "")}`;
+  const whatsappUrl = siteConfig.whatsappUrl;
 
   return (
     <motion.div

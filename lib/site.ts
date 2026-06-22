@@ -25,6 +25,15 @@ export const siteConfig = {
     facebook: "https://www.facebook.com/profile.php?id=61589287366189",
     instagram: "https://www.instagram.com/saryab_technicals/",
   },
+  whatsappUrl: "https://wa.me/971586166905",
+  nav: {
+    home: "/#home",
+    about: "/#about",
+    services: "/#services",
+    projects: "/#projects",
+    whyUs: "/#why-us",
+    contact: "/contact",
+  },
   keywords: [
     "Saryab Technicals",
     "facilities management UAE",

@@ -18,7 +18,7 @@ import {
   FiMoon,
 } from "react-icons/fi";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
-import { fadeUp } from "../../utils/animations";
+import ScrollReveal from "../ScrollReveal";
 
 const features = [
   "Preventive Maintenance",
@@ -448,18 +448,14 @@ export default function DashboardSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-slate-900 to-brand-navy" />
 
       <div className="container-main relative z-10">
-        <div className="grid lg:grid-cols-2 gap-4 items-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center py-12 lg:py-20">
+          <ScrollReveal y={48}>
             <span className="section-label text-blue-400">Integrated Facilities Management</span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight font-display">
               One System. <br /> One Partner. <br />
               <span className="text-brand-blue">Total Control.</span>
             </h2>
+            <div className="w-12 h-1 bg-accent-warm mb-6" />
             <p className="text-slate-300 leading-relaxed mb-8">
               Our integrated facilities management platform gives you complete visibility and control over every aspect of your building operations from maintenance scheduling to security monitoring.
             </p>
@@ -472,16 +468,11 @@ export default function DashboardSection() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+          <ScrollReveal x={60} y={0} delay={0.15}>
             <FacilityDashboard />
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
