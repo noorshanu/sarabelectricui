@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cpanel": "next build && cd out && zip -r ../saryab-website-cpanel.zip . -x '*.DS_Store'",
     "start": "next start",
     "lint": "eslint"
   },

@@ -14,7 +14,7 @@ const projects = [
   { title: "Commercial HVAC Upgrade", location: "Abu Dhabi, UAE", category: "HVAC", image: "/images/projects/hvac.png" },
   { title: "Hotel Cleaning Contract", location: "Sharjah, UAE", category: "Cleaning", image: "/images/projects/cleaning.png" },
   { title: "Security System Installation", location: "Dubai, UAE", category: "Security", image: "/images/projects/security.png" },
-  { title: "Pool Maintenance Program", location: "Ajman, UAE", category: "Pool", image: "/images/projects/swiming pool.png" },
+  { title: "Pool Maintenance Program", location: "Ajman, UAE", category: "Pool", image: "/images/projects/swimming-pool.png" },
   { title: "Building Maintenance Contract", location: "Dubai, UAE", category: "Maintenance", image: "/images/projects/maintance.png" },
 ];
 
