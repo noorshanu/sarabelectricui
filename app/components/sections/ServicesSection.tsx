@@ -14,6 +14,7 @@ import {
   FiLayers,
   FiBox,
   FiSettings,
+  FiGrid,
 } from "react-icons/fi";
 import { MdCleaningServices } from "react-icons/md";
 import ScrollReveal from "../ScrollReveal";
@@ -21,18 +22,19 @@ import ScrollReveal from "../ScrollReveal";
 const categories = ["All Services", "MEP Systems", "Operations", "Specialty"] as const;
 
 const services = [
+  { icon: FiLayout, title: "Fitout & Interiors", desc: "Modern workspaces and renovations.", category: "Specialty" },
+  { icon: FiShield, title: "Security Services", desc: "24/7 protection and monitoring.", category: "Operations" },
+  { icon: MdCleaningServices, title: "Cleaning Services", desc: "Professional commercial and residential cleaning.", category: "Operations" },
+  { icon: FiTool, title: "Building Maintenance", desc: "Preventive and corrective maintenance.", category: "Operations" },
   { icon: FiWind, title: "HVAC Services", desc: "Installation, maintenance and repairs.", category: "MEP Systems" },
+  { icon: FiLayers, title: "Painting & Flooring", desc: "High quality painting and flooring works.", category: "Specialty" },
+  { icon: FiGrid, title: "Tiles Installation", desc: "Professional tile supply and installation.", category: "Specialty" },
+  { icon: FiBox, title: "Carpentry Works", desc: "Custom carpentry and wood works.", category: "Specialty" },
+  { icon: FiActivity, title: "Swimming Pool Works", desc: "Design, installation and maintenance.", category: "Specialty" },
   { icon: FiZap, title: "Electrical Works", desc: "Power distribution and electrical maintenance.", category: "MEP Systems" },
   { icon: FiDroplet, title: "Plumbing & Sanitary", desc: "Reliable water and drainage systems.", category: "MEP Systems" },
-  { icon: MdCleaningServices, title: "Cleaning Services", desc: "Professional commercial and residential cleaning.", category: "Operations" },
-  { icon: FiShield, title: "Security Services", desc: "24/7 protection and monitoring.", category: "Operations" },
-  { icon: FiLayout, title: "Fitout & Interiors", desc: "Modern workspaces and renovations.", category: "Specialty" },
-  { icon: FiTool, title: "Building Maintenance", desc: "Preventive and corrective maintenance.", category: "Operations" },
-  { icon: FiActivity, title: "Swimming Pool Works", desc: "Design, installation and maintenance.", category: "Specialty" },
-  { icon: FiHome, title: "Tents & Sheds", desc: "Professional installation of tents and sheds.", category: "Specialty" },
-  { icon: FiLayers, title: "Painting & Flooring", desc: "High quality painting and flooring works.", category: "Specialty" },
-  { icon: FiBox, title: "Carpentry Works", desc: "Custom carpentry and wood works.", category: "Specialty" },
   { icon: FiSettings, title: "Metal Works", desc: "Metal fabrication and structural works.", category: "Specialty" },
+  { icon: FiHome, title: "Tents & Sheds", desc: "Professional installation of tents and sheds.", category: "Specialty" },
 ];
 
 export default function ServicesSection() {
