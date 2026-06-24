@@ -1,21 +1,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { siteConfig } from "@/lib/site";
+import { heroSlides } from "@/lib/images";
+import OptimizedImage from "../OptimizedImage";
 import { fadeUp } from "../../utils/animations";
-
-const heroSlides = [
-  { src: "/images/banner.jpeg", alt: "Facility management banner" },
-  { src: "/images/banner2.jpeg", alt: "Facility services banner" },
-  { src: "/images/herobg.png", alt: "Saryab Technicals hero background" },
-];
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    heroSlides.slice(1).forEach((slide) => {
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.as = "image";
+      link.href = slide.webp;
+      document.head.appendChild(link);
+    });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,10 +30,12 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, []);
 
+  const slide = heroSlides[currentSlide];
+
   return (
     <section id="home" className="relative min-h-[93vh] flex flex-col items-start justify-center pt-20 overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, scale: 1.05 }}
@@ -37,12 +44,13 @@ export default function HeroSection() {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            <Image
-              src={heroSlides[currentSlide].src}
-              alt={heroSlides[currentSlide].alt}
+            <OptimizedImage
+              fallback={slide.fallback}
+              webp={slide.webp}
+              alt={slide.alt}
               fill
-              className="object-cover object-left"
               priority={currentSlide === 0}
+              imgClassName="object-left"
             />
           </motion.div>
         </AnimatePresence>

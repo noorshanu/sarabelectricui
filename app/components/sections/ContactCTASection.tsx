@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { FiPhone, FiMail, FiMapPin, FiArrowRight } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { siteConfig } from "@/lib/site";
+import { ctaImage } from "@/lib/images";
+import OptimizedImage from "../OptimizedImage";
 import ScrollReveal from "../ScrollReveal";
 
 const fullAddress = `${siteConfig.address.streetAddress}, ${siteConfig.address.addressLocality}, UAE`;
@@ -21,12 +22,12 @@ export default function ContactCTASection() {
       <div className="container-main">
         <ScrollReveal y={40}>
           <div className="relative rounded-2xl overflow-hidden min-h-[320px] lg:min-h-[280px]">
-          <Image
-            src="/images/cta.png"
-            alt="Contact CTA Background"
+          <OptimizedImage
+            fallback={ctaImage.fallback}
+            webp={ctaImage.webp}
+            alt={ctaImage.alt}
             fill
-            className="object-cover object-right"
-            priority
+            imgClassName="object-right"
           />
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-12 p-8 lg:p-10 xl:p-12 h-full">

@@ -1,8 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
-
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
+import { aboutImage } from "@/lib/images";
+import OptimizedImage from "../OptimizedImage";
 import ScrollReveal from "../ScrollReveal";
 
 export default function WhoWeAreSection() {
@@ -16,7 +15,12 @@ export default function WhoWeAreSection() {
             <div className="relative">
               <div className="absolute -top-3 -left-3 w-full h-full border border-brand-blue/20 rounded-2xl pointer-events-none" />
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden section-surface shadow-xl">
-                <img src="/images/about2.png" alt="Saryab Technicals facility team" className="w-full h-full object-cover" />
+                <OptimizedImage
+                  fallback={aboutImage.fallback}
+                  webp={aboutImage.webp}
+                  alt={aboutImage.alt}
+                  fill
+                />
                 <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-brand-navy/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white text-xs font-display tracking-widest uppercase">
                   <span>Dubai · UAE</span>

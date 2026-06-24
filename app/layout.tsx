@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import JsonLd from "./components/JsonLd";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { siteConfig, siteUrl } from "@/lib/site";
+import { heroSlides } from "@/lib/images";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -102,6 +103,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased ${plusJakarta.variable} ${ibmPlex.variable}`}>
+      <head>
+        <link rel="preload" as="image" href={heroSlides[0].webp} type="image/webp" fetchPriority="high" />
+        <link rel="preload" as="image" href={heroSlides[0].fallback} fetchPriority="high" />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
         <JsonLd />
         <SmoothScroll>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { FiPhone, FiMail, FiMapPin, FiArrowRight } from "react-icons/fi";
 import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import { siteConfig } from "@/lib/site";
+import { ctaImage } from "@/lib/images";
+import OptimizedImage from "@/app/components/OptimizedImage";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -79,11 +80,12 @@ export default function ContactPage() {
       <section className="pb-20 lg:pb-28">
         <div className="container-main">
           <div className="relative rounded-2xl overflow-hidden min-h-[280px]">
-            <Image
-              src="/images/cta.png"
-              alt="Contact CTA"
+            <OptimizedImage
+              fallback={ctaImage.fallback}
+              webp={ctaImage.webp}
+              alt={ctaImage.alt}
               fill
-              className="object-cover object-right"
+              imgClassName="object-right"
             />
             <div className="relative z-10 p-8 md:p-12 lg:max-w-lg text-white">
               <h2 className="text-2xl md:text-3xl font-bold font-display mb-4 leading-tight">

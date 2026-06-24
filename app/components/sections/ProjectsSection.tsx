@@ -1,21 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { projectImages } from "@/lib/images";
+import OptimizedImage from "../OptimizedImage";
 import ScrollReveal from "../ScrollReveal";
 
 const filters = ["All Projects", "Fitout", "HVAC", "Cleaning", "Security", "Pool", "Maintenance"];
 
 const projects = [
-  { title: "Office Fitout Project", location: "Dubai, UAE", category: "Fitout", image: "/images/projects/office.png" },
-  { title: "Commercial HVAC Upgrade", location: "Abu Dhabi, UAE", category: "HVAC", image: "/images/projects/hvac.png" },
-  { title: "Hotel Cleaning Contract", location: "Sharjah, UAE", category: "Cleaning", image: "/images/projects/cleaning.png" },
-  { title: "Security System Installation", location: "Dubai, UAE", category: "Security", image: "/images/projects/security.png" },
-  { title: "Pool Maintenance Program", location: "Ajman, UAE", category: "Pool", image: "/images/projects/swimming-pool.png" },
-  { title: "Building Maintenance Contract", location: "Dubai, UAE", category: "Maintenance", image: "/images/projects/maintance.png" },
+  { title: "Office Fitout Project", location: "Dubai, UAE", category: "Fitout", image: projectImages.office },
+  { title: "Commercial HVAC Upgrade", location: "Abu Dhabi, UAE", category: "HVAC", image: projectImages.hvac },
+  { title: "Hotel Cleaning Contract", location: "Sharjah, UAE", category: "Cleaning", image: projectImages.cleaning },
+  { title: "Security System Installation", location: "Dubai, UAE", category: "Security", image: projectImages.security },
+  { title: "Pool Maintenance Program", location: "Ajman, UAE", category: "Pool", image: projectImages.pool },
+  { title: "Building Maintenance Contract", location: "Dubai, UAE", category: "Maintenance", image: projectImages.maintenance },
 ];
 
 export default function ProjectsSection() {
@@ -96,12 +97,12 @@ export default function ProjectsSection() {
                   className="section-surface rounded-xl overflow-hidden group"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
-                    <Image
-                      src={project.image}
+                    <OptimizedImage
+                      fallback={project.image.fallback}
+                      webp={project.image.webp}
                       alt={project.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      imgClassName="group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-brand-navy/0 group-hover:bg-brand-navy/20 transition-colors duration-500" />
                   </div>
