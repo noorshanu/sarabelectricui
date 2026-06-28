@@ -28,7 +28,6 @@ const services = [
   { icon: FiTool, title: "Building Maintenance", desc: "Preventive and corrective maintenance.", category: "Operations" },
   { icon: FiWind, title: "HVAC Services", desc: "Installation, maintenance and repairs.", category: "MEP Systems" },
   { icon: FiLayers, title: "Painting & Flooring", desc: "High quality painting and flooring works.", category: "Specialty" },
-  { icon: FiGrid, title: "Tiles Installation", desc: "Professional tile supply and installation.", category: "Specialty" },
   { icon: FiBox, title: "Carpentry Works", desc: "Custom carpentry and wood works.", category: "Specialty" },
   { icon: FiActivity, title: "Swimming Pool Works", desc: "Design, installation and maintenance.", category: "Specialty" },
   { icon: FiZap, title: "Electrical Works", desc: "Power distribution and electrical maintenance.", category: "MEP Systems" },
